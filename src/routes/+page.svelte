@@ -1,29 +1,9 @@
 <script>
-    export let question;
-    export let correctAnswer;
-    export let incorrectAnswers;
-
-    
-
-    const shuffle = (array) => array.sort( () => .5 - Math.random() );
-    let possibleAnswers = shuffle([...incorrectAnswers,correctAnswer]);
-
-    const handleClick = (answer) =>{
-        if(answer == correctAnswer){
-            alert("Tacno!")
-        }
-        else{
-            alert(`Netačno! Tačan odgovor je ${correctAnswer}`)
-        }
-    }
-
+    import Question from "./Question.svelte";
 </script>
+<h1>Kviz</h1>
 
-<div>
-    <h3>{@html question}</h3>
-    <div id = "answers">
-        {#each possibleAnswers as pa}
-            <button on:click= {() => handleClick(pa)}>{pa}</button>
-        {/each}
-    </div>
-</div>
+<Question
+    question = 'Koje godine je objavljena prva igra iz poznatog serija "The Legend of Zelda"?'
+    correctAnswer = {1986}
+    incorrectAnswers = {[1989,1835,1999]}/>
